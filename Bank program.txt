@@ -1,0 +1,141 @@
+package com.may16;
+import java.util.*;
+
+interface account{
+	void createAccount();
+	void deposite();
+	void withDraw();
+	void balCheck();
+	
+}
+
+
+ class Bank implements account{
+
+
+	 String firstname,lastname,gender,address;
+	 int age,accno,i,a=0,t;
+	 long phno;
+	 float depositeamount,withdrawamount,balance,openbal=5000;
+	 int array[]={1,2,3,4,5,6,7,8,9};
+	 
+	 Scanner ob=new Scanner(System.in);
+	 
+	 public void createAccount(){
+		 Bank bn=new Bank();
+		 System.out.println("Enter First name");
+		 firstname=ob.next();
+		 System.out.println("Enter Last name");
+		 lastname=ob.next();
+		 System.out.println("Enter your age");
+		 age=ob.nextInt();
+		 System.out.println("enter your gender");
+	     gender=ob.next();
+	     System.out.println("enter your mobile number");
+	     phno=ob.nextLong();
+	     System.out.println("enter your address");
+	     address=ob.next();
+	     System.out.println("your acount has been created successfully");
+	    bn.torf();
+	 }
+	 
+	 public void torf(){
+		 Bank bn=new Bank();
+		 System.out.println("do you want to deposite money?? \n if yes press 1 \n if no press 2");
+		 t=ob.nextInt();
+		 if(t==1){
+			 bn.deposite();
+		 }
+		 else{
+			 System.out.println("you can now leave");
+		 }
+		 
+	 }
+	 
+	 
+     public void deposite(){
+    	 Bank bn=new Bank();
+    	 System.out.println("enter your accno");
+    	 accno=ob.nextInt();
+         for(i=0;i<array.length;i++){
+        	 if(accno==array[i]){
+        	    a=1;
+        	    break;
+        	 }
+         }
+        	 if(a==1){
+        System.out.println("Enter the amount to be deposited");
+    	depositeamount=ob.nextFloat();
+    	balance=balance+depositeamount;
+    	System.out.println("the fianl balance is "+balance);
+        	 }
+    	else{
+    		System.out.println("enter valid accno");
+   		 bn.deposite();
+    	}
+        	 }
+     
+	 
+     public void withDraw(){
+    	 Bank bn=new Bank();
+    	 System.out.println("enter your accno");
+    	 accno=ob.nextInt();
+         for(i=0;i<array.length;i++){
+        	 if(accno==array[i]){
+        	    a=1;
+        	    break;
+        	 }
+         }
+        	 if(a==1){
+    	 System.out.println("enter the amount to be withdrawed");
+    	 withdrawamount=ob.nextFloat();
+    	        if(balance>=withdrawamount){
+    	        balance=balance-withdrawamount;
+    	         System.out.println("the fianl balance is "+balance);
+    	           }
+    	       else{
+    		 System.out.println("You donot have sufficient balance");
+    	         }
+        	 }
+    	        else{
+    	    		 System.out.println("enter a valid accno");
+    	    		 bn.withDraw();
+    	
+    	 }
+     }
+    	 public void balCheck(){
+    		 System.out.println("your balance is "+balance);
+    	 }
+    	 
+    	
+    	 
+    	 public static void main(String[] args)
+    	 {
+    		 Bank bn=new Bank();
+    	     String activity;
+    	     System.out.println("enteer the activity to perform\n 1. c for create account \n 2.d for deposite \n 3. w for withdraw \n 4.b for balance check");
+    	     Scanner ob=new Scanner(System.in);
+    	     activity=ob.next();
+    	     char g=activity.charAt(0);
+    		
+    	     if(g=='c')
+    		 {
+    		
+    			 bn.createAccount();
+    			}
+    		 else if(g=='d'){
+    			 bn.deposite();
+    		 }
+    		 else if(g=='w'){
+    			 bn.withDraw();
+    		 }
+    		 else if (g=='b'){
+    			 bn.balCheck();
+    		 }
+    		 
+ 		}
+     
+  }
+    	 
+	
+
